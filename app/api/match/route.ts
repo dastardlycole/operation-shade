@@ -38,7 +38,15 @@ export async function POST(req: NextRequest) {
       messages: [
         {
           role: "user",
-          content: `You are deciding whether a new question is asking the same thing as a previously answered question. "Same thing" means the core intent and subject are equivalent — not just shared words.
+          content: `You are deciding whether a new question is asking about the exact same product or topic as a previously answered question. Both must be about the same specific subject — matching on shared emotion, uncertainty, or vague similarity is NOT a match.
+
+Examples of NOT a match:
+- "I don't know my skin type" vs "which cocoa butter is best" → different subjects
+- "I'm not sure what to use" vs "is the night serum worth it" → different subjects
+
+Examples of a match:
+- "what cocoa butter for dry lips" vs "which cocoa butter for chapped lips" → same product, same concern
+- "is cloud cream good for oily skin" vs "can oily skin use cloud cream" → same product, same skin type
 
 New question: "${message}"
 
@@ -46,8 +54,8 @@ Previously answered questions:
 ${candidateList}
 
 Reply with JSON only:
-- If there is a match: { "match": <number>, "confidence": "high" | "medium", "reason": "<one short phrase>" }
-- If no match: { "match": null }
+- If there is a clear match on the same specific product or topic: { "match": <number>, "confidence": "high" | "medium", "reason": "<one short phrase>" }
+- If no clear match: { "match": null }
 
 No explanation outside the JSON.`,
         },

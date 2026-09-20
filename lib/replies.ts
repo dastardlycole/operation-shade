@@ -106,6 +106,34 @@ export function findMatchingAnswer(message: string): PromotedAnswer | null {
   return bestScore >= 1 ? best : null;
 }
 
+// ─── Promoted quiz branches (deterministic branch off a specific quiz option) ──
+
+const QUIZ_BRANCHES_KEY = "shade_quiz_branches";
+
+export interface PromotedQuizBranch {
+  id: string;
+  questionKey: string; // e.g. "skin"
+  optionKey: string;   // e.g. "not-sure"
+  answer: string;
+  promotedAt: number;
+}
+
+export function savePromotedQuizBranch(b: PromotedQuizBranch): void {
+  if (typeof window === "undefined") return;
+  const all = loadPromotedQuizBranches();
+  all[`${b.questionKey}:${b.optionKey}`] = b;
+  localStorage.setItem(QUIZ_BRANCHES_KEY, JSON.stringify(all));
+}
+
+export function loadPromotedQuizBranches(): Record<string, PromotedQuizBranch> {
+  if (typeof window === "undefined") return {};
+  try { return JSON.parse(localStorage.getItem(QUIZ_BRANCHES_KEY) ?? "{}"); } catch { return {}; }
+}
+
+export function findQuizBranch(questionKey: string, optionKey: string): PromotedQuizBranch | null {
+  return loadPromotedQuizBranches()[`${questionKey}:${optionKey}`] ?? null;
+}
+
 // ─── Legacy PromotedRule shim (inbox pre-fill by skin trigger) ───────────────
 // Kept so old seeded @sarah previousAnswer flow still compiles.
 

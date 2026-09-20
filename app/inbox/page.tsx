@@ -8,6 +8,7 @@ import { score, sortByBehaviour } from "@/lib/scorer";
 import {
   saveReply,
   savePromotedAnswer,
+  savePromotedQuizBranch,
   loadInboxMessages,
   loadPromotedAnswers,
   extractKeywords,
@@ -55,7 +56,7 @@ export default function InboxPage() {
   const [liveMessages, setLiveMessages] = useState<InboxMessage[]>([]);
   const [reply, setReply] = useState("");
   const [answered, setAnswered] = useState<Set<string>>(new Set());
-  const [showPromotion, setShowPromotion] = useState<{ id: string; question: string; answer: string } | null>(null);
+  const [showPromotion, setShowPromotion] = useState<{ id: string; question: string; answer: string; isQuizDrop: boolean } | null>(null);
   const [promotionWording, setPromotionWording] = useState("");
   const [recall, setRecall] = useState<{ answer: PromotedAnswer; result: MatchResult } | null>(null);
   const [recallLoading, setRecallLoading] = useState(false);
@@ -138,23 +139,36 @@ export default function InboxPage() {
 
     // Offer promotion for page messages (escape or live), only if not already recalled
     if ((selected.kind === "escape" || selected.kind === "live") && !recall) {
-      setShowPromotion({ id: selectedId, question: originalMsg, answer: textToSend });
+      const isQuizDrop =
+        (selected.kind === "escape" && selected.item.routingPath?.skin === "not-sure") ||
+        (selected.kind === "live" && selected.item.sessionData.skin === "not-sure");
+      setShowPromotion({ id: selectedId, question: originalMsg, answer: textToSend, isQuizDrop: !!isQuizDrop });
       setPromotionWording(textToSend);
     }
     setReply("");
   }
 
-  function handleAddRule() {
+  function handleAddRule(type: "standing" | "quiz") {
     if (!showPromotion) return;
-    const keywords = extractKeywords(showPromotion.question);
-    const promoted: PromotedAnswer = {
-      id: showPromotion.id,
-      originalQuestion: showPromotion.question,
-      keywords,
-      answer: promotionWording,
-      promotedAt: Date.now(),
-    };
-    savePromotedAnswer(promoted);
+    if (type === "quiz") {
+      savePromotedQuizBranch({
+        id: showPromotion.id,
+        questionKey: "skin",
+        optionKey: "not-sure",
+        answer: promotionWording,
+        promotedAt: Date.now(),
+      });
+    } else {
+      const keywords = extractKeywords(showPromotion.question);
+      const promoted: PromotedAnswer = {
+        id: showPromotion.id,
+        originalQuestion: showPromotion.question,
+        keywords,
+        answer: promotionWording,
+        promotedAt: Date.now(),
+      };
+      savePromotedAnswer(promoted);
+    }
     setShowPromotion(null);
   }
 
@@ -469,35 +483,51 @@ export default function InboxPage() {
         <div className="fixed inset-0 bg-ink/30 flex items-center justify-center px-5">
           <div className="bg-white w-full max-w-md p-6">
             <h2 className="font-serif text-2xl text-ink mb-2">Add this to the loop?</h2>
-            <p className="text-sm text-ink/65 mb-1 leading-relaxed">
-              Next time someone asks something similar, the inbox pre-loads this answer for you. You still review and send — it just saves the thinking.
-            </p>
-            <p className="text-[10px] tracking-[0.15em] text-ink/35 uppercase mt-4 mb-1">
-              Will match on
-            </p>
-            <p className="text-xs text-terra mb-4">
-              {extractKeywords(showPromotion.question).join(", ") || "—"}
-            </p>
+            {!showPromotion.isQuizDrop && (
+              <>
+                <p className="text-[10px] tracking-[0.15em] text-ink/35 uppercase mt-4 mb-1">Will match on</p>
+                <p className="text-xs text-terra mb-4">
+                  {extractKeywords(showPromotion.question).join(", ") || "—"}
+                </p>
+              </>
+            )}
             <p className="text-[10px] tracking-[0.15em] text-ink/35 uppercase mb-2">Your answer</p>
             <textarea
               value={promotionWording}
               onChange={(e) => setPromotionWording(e.target.value)}
               className="w-full border border-ink/15 p-3 text-sm text-ink h-24 resize-none focus:outline-none focus:border-ink/40 mb-4"
             />
-            <div className="flex gap-3">
-              <button
-                onClick={() => setShowPromotion(null)}
-                className="flex-1 border border-ink/20 text-ink py-3 text-sm"
-              >
-                Not this one
-              </button>
-              <button
-                onClick={handleAddRule}
-                className="flex-1 bg-[#8B2012] text-white py-3 text-sm"
-              >
-                Add to the loop
-              </button>
+            <div className="flex gap-3 mb-3">
+              {showPromotion.isQuizDrop ? (
+                <>
+                  <button
+                    onClick={() => handleAddRule("quiz")}
+                    className="flex-1 bg-ink text-white py-3 text-sm"
+                  >
+                    Add to the quiz
+                  </button>
+                  <button
+                    onClick={() => handleAddRule("standing")}
+                    className="flex-1 bg-[#8B2012] text-white py-3 text-sm"
+                  >
+                    Add as standing answer
+                  </button>
+                </>
+              ) : (
+                <button
+                  onClick={() => handleAddRule("standing")}
+                  className="flex-1 bg-[#8B2012] text-white py-3 text-sm"
+                >
+                  Add to the loop
+                </button>
+              )}
             </div>
+            <button
+              onClick={() => setShowPromotion(null)}
+              className="w-full border border-ink/20 text-ink py-3 text-sm"
+            >
+              Not this one
+            </button>
           </div>
         </div>
       )}

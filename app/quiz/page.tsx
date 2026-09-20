@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import questionsData from "@/data/questions.json";
+import { findQuizBranch } from "@/lib/replies";
 import type { Question } from "@/lib/types";
 
 const questions = questionsData as Question[];
@@ -14,6 +15,7 @@ export default function QuizPage() {
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Partial<Answers>>({});
+  const [branchAnswer, setBranchAnswer] = useState<string | null>(null);
 
   const question = questions[step];
 
@@ -23,6 +25,11 @@ export default function QuizPage() {
     setAnswers(next);
 
     if (key === "skin" && value === "not-sure") {
+      const branch = findQuizBranch("skin", "not-sure");
+      if (branch) {
+        setBranchAnswer(branch.answer);
+        return;
+      }
       router.push("/escape?skin=not-sure");
       return;
     }
@@ -37,6 +44,37 @@ export default function QuizPage() {
 
   function handleBack() {
     if (step > 0) setStep(step - 1);
+  }
+
+  if (branchAnswer) {
+    return (
+      <div className="min-h-screen bg-cream flex justify-center">
+        <div className="w-full max-w-sm px-5 py-6">
+          <div className="flex items-center justify-between mb-6">
+            <button onClick={() => setBranchAnswer(null)} className="text-ink text-lg" aria-label="Back">‹</button>
+            <span className="text-[10px] tracking-[0.15em] text-terra uppercase font-sans">Maya&apos;s answer</span>
+          </div>
+          <h1 className="font-serif text-[2rem] leading-tight text-ink mb-6">
+            Not sure about your skin type?
+          </h1>
+          <div className="border border-ink/12 bg-white px-5 py-5 mb-4">
+            <p className="text-[10px] tracking-[0.15em] text-ink/35 uppercase mb-3">Maya says</p>
+            <p className="font-serif italic text-ink text-lg leading-relaxed">
+              &ldquo;{branchAnswer}&rdquo;
+            </p>
+          </div>
+          <p className="text-xs text-ink/35 mb-8">
+            This is Maya&apos;s standing answer, not a bot. She wrote it.
+          </p>
+          <button
+            onClick={() => router.push("/escape?skin=not-sure")}
+            className="w-full border border-ink/20 text-ink py-3.5 text-sm text-center"
+          >
+            Still want to ask Maya directly?
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
