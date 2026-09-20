@@ -1,0 +1,45 @@
+[
+  {
+    "id": "skin",
+    "order": 1,
+    "prompt": "What's your skin doing?",
+    "options": [
+      { "value": "dry", "label": "Dry" },
+      { "value": "oily", "label": "Oily / combo" },
+      { "value": "sensitive", "label": "Sensitive" },
+      { "value": "redness", "label": "Redness" },
+      { "value": "not-sure", "label": "Not sure" }
+    ]
+  },
+  {
+    "id": "routine",
+    "order": 2,
+    "prompt": "What are you using now?",
+    "options": [
+      { "value": "nothing", "label": "Nothing" },
+      { "value": "cleanser-only", "label": "A cleanser only" },
+      { "value": "full-routine", "label": "Full routine" }
+    ]
+  },
+  {
+    "id": "budget",
+    "order": 3,
+    "prompt": "What's your budget?",
+    "options": [
+      { "value": "under-30", "label": "Under £30" },
+      { "value": "30-60", "label": "£30–60" },
+      { "value": "60-plus", "label": "£60+" }
+    ]
+  },
+  {
+    "id": "finish",
+    "order": 4,
+    "prompt": "What finish do you like?",
+    "options": [
+      { "value": "rich", "label": "Rich" },
+      { "value": "light", "label": "Light" },
+      { "value": "glow", "label": "Glow" },
+      { "value": "invisible", "label": "Invisible" }
+    ]
+  }
+]

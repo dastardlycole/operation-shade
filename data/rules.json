@@ -1,0 +1,89 @@
+[
+  {
+    "id": "rule-dry-under30",
+    "conditions": { "skin": "dry", "budget": "under-30" },
+    "productRefs": ["E-04.8", "E-04.5"],
+    "budgetNote": "Cloud Cream (£38) is her top pick for dry skin but sits just over budget. Oil Balm gets you there for less.",
+    "source": "seed",
+    "active": true
+  },
+  {
+    "id": "rule-dry-30-60",
+    "conditions": { "skin": "dry", "budget": "30-60" },
+    "productRefs": ["E-04.1", "E-04.5"],
+    "source": "seed",
+    "active": true
+  },
+  {
+    "id": "rule-dry-60plus",
+    "conditions": { "skin": "dry", "budget": "60-plus" },
+    "productRefs": ["E-04.1", "E-04.4", "E-04.5"],
+    "source": "seed",
+    "active": true
+  },
+  {
+    "id": "rule-oily-under30",
+    "conditions": { "skin": "oily", "budget": "under-30" },
+    "productRefs": ["E-04.2", "E-04.9", "E-04.5"],
+    "source": "seed",
+    "active": true
+  },
+  {
+    "id": "rule-oily-30-60",
+    "conditions": { "skin": "oily", "budget": "30-60" },
+    "productRefs": ["E-04.2", "E-04.9", "E-04.5"],
+    "source": "seed",
+    "active": true
+  },
+  {
+    "id": "rule-oily-60plus",
+    "conditions": { "skin": "oily", "budget": "60-plus" },
+    "productRefs": ["E-04.2", "E-04.9", "E-04.5"],
+    "source": "seed",
+    "active": true
+  },
+  {
+    "id": "rule-sensitive-under30",
+    "conditions": { "skin": "sensitive", "budget": "under-30" },
+    "productRefs": ["E-04.3", "E-04.5"],
+    "source": "seed",
+    "active": true
+  },
+  {
+    "id": "rule-sensitive-30-60",
+    "conditions": { "skin": "sensitive", "budget": "30-60" },
+    "productRefs": ["E-04.3", "E-04.5"],
+    "fragranceWarning": true,
+    "source": "seed",
+    "active": true
+  },
+  {
+    "id": "rule-sensitive-60plus",
+    "conditions": { "skin": "sensitive", "budget": "60-plus" },
+    "productRefs": ["E-04.3", "E-04.4", "E-04.5"],
+    "fragranceWarning": true,
+    "source": "seed",
+    "active": true
+  },
+  {
+    "id": "rule-redness-under30",
+    "conditions": { "skin": "redness", "budget": "under-30" },
+    "productRefs": ["E-04.3", "E-04.5"],
+    "source": "seed",
+    "active": true
+  },
+  {
+    "id": "rule-redness-30-60",
+    "conditions": { "skin": "redness", "budget": "30-60" },
+    "productRefs": ["E-04.3", "E-04.5"],
+    "source": "seed",
+    "active": true
+  },
+  {
+    "id": "rule-redness-60plus",
+    "conditions": { "skin": "redness", "budget": "60-plus" },
+    "productRefs": ["E-04.3", "E-04.4", "E-04.5"],
+    "source": "seed",
+    "active": true
+  }
+]

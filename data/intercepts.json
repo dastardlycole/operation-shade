@@ -1,0 +1,98 @@
+[
+  {
+    "id": "E-01.1",
+    "handle": "ellie.mp",
+    "type": "info",
+    "message": "what shade are u wearing in todays video???",
+    "routingPath": null,
+    "previousAnswer": null
+  },
+  {
+    "id": "E-01.2",
+    "handle": "gracelee",
+    "type": "recommendation",
+    "message": "i have dry skin + redness and £60. tell me what to buy pls",
+    "routingPath": { "skin": "redness", "budget": "30-60", "finish": null },
+    "previousAnswer": null
+  },
+  {
+    "id": "E-01.3",
+    "handle": "ameliaxo",
+    "type": "judgement",
+    "message": "okay but if u could only keep ONE of these which one",
+    "routingPath": null,
+    "previousAnswer": null
+  },
+  {
+    "id": "E-01.4",
+    "handle": "sarah",
+    "type": "value",
+    "message": "is the cloud cream actually worth £38 or am i being influenced",
+    "routingPath": { "skin": "dry", "budget": "30-60", "finish": "rich" },
+    "previousAnswer": "Yes. It is the one I reach for every winter without thinking about it. £38 is not nothing but it lasts. If you are on the fence, start with the Oil Balm at £29 and see how your skin responds."
+  },
+  {
+    "id": "E-01.5",
+    "handle": "jessica",
+    "type": "context",
+    "message": "i already have the night serum. do i need the barrier cream too???",
+    "routingPath": null,
+    "previousAnswer": null
+  },
+  {
+    "id": "E-01.6",
+    "handle": "niamh",
+    "type": "diagnosis",
+    "message": "i dont even know what my skin type is lol",
+    "routingPath": { "skin": "not-sure", "budget": null, "finish": null },
+    "previousAnswer": null
+  },
+  {
+    "id": "E-01.7",
+    "handle": "olivia",
+    "type": "trust",
+    "message": "i trust you more than Sephora tbh",
+    "routingPath": null,
+    "previousAnswer": null
+  },
+  {
+    "id": "E-01.8",
+    "handle": "kate",
+    "type": "relationship",
+    "message": "Maya I have a first date Friday HELP",
+    "routingPath": null,
+    "previousAnswer": null
+  },
+  {
+    "id": "E-01.9",
+    "handle": "joanna",
+    "type": "constraint",
+    "message": "can you make me a routine but only 2 products bc i will not do 8 steps",
+    "routingPath": null,
+    "previousAnswer": null
+  },
+  {
+    "id": "E-01.10",
+    "handle": "mia",
+    "type": "delayed-intent",
+    "message": "I saw the thing you recommended last week. buying it payday",
+    "routingPath": null,
+    "previousAnswer": null
+  },
+  {
+    "id": "E-01.11",
+    "handle": "lucy",
+    "type": "transfer-of-trust",
+    "message": "not a beauty question but what would you do if it was your money?",
+    "routingPath": null,
+    "previousAnswer": null
+  },
+  {
+    "id": "E-01.12",
+    "handle": "roisin",
+    "type": "personalisation",
+    "message": "can you send me the one you would buy if you were me",
+    "routingPath": null,
+    "previousAnswer": null
+  }
+]

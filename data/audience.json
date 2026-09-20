@@ -1,0 +1,92 @@
+[
+  {
+    "handle": "tara",
+    "dms": 0,
+    "saves": 11,
+    "shares": 2,
+    "returns": 5,
+    "bought": true,
+    "order": 122
+  },
+  {
+    "handle": "alice",
+    "dms": 0,
+    "saves": 7,
+    "shares": 4,
+    "returns": 3,
+    "bought": true,
+    "order": 94
+  },
+  {
+    "handle": "zoe",
+    "dms": 0,
+    "saves": 9,
+    "shares": 5,
+    "returns": 4,
+    "bought": true,
+    "order": 86
+  },
+  {
+    "handle": "rina",
+    "dms": 0,
+    "saves": 8,
+    "shares": 3,
+    "returns": 4,
+    "bought": true,
+    "order": 71
+  },
+  {
+    "handle": "mila",
+    "dms": 0,
+    "saves": 5,
+    "shares": 4,
+    "returns": 3,
+    "bought": true,
+    "order": 64
+  },
+  {
+    "handle": "megan",
+    "dms": 1,
+    "saves": 2,
+    "shares": 6,
+    "returns": 2,
+    "bought": true,
+    "order": 38
+  },
+  {
+    "handle": "naomi",
+    "dms": 2,
+    "saves": 3,
+    "shares": 0,
+    "returns": 2,
+    "bought": false,
+    "order": 0
+  },
+  {
+    "handle": "ella",
+    "dms": 3,
+    "saves": 2,
+    "shares": 1,
+    "returns": 1,
+    "bought": false,
+    "order": 0
+  },
+  {
+    "handle": "liv",
+    "dms": 4,
+    "saves": 1,
+    "shares": 0,
+    "returns": 1,
+    "bought": false,
+    "order": 0
+  },
+  {
+    "handle": "nora",
+    "dms": 1,
+    "saves": 1,
+    "shares": 0,
+    "returns": 1,
+    "bought": false,
+    "order": 0
+  }
+]

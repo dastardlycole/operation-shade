@@ -1,0 +1,112 @@
+[
+  {
+    "ref": "E-04.1",
+    "name": "Cloud Cream",
+    "price": 38,
+    "type": "Moisturiser",
+    "skin": ["dry"],
+    "finish": "rich",
+    "rating": 9.2,
+    "note": "My winter skin saviour.",
+    "endorsed": true
+  },
+  {
+    "ref": "E-04.2",
+    "name": "Daily Gel",
+    "price": 24,
+    "type": "Moisturiser",
+    "skin": ["oily", "combo"],
+    "finish": "light",
+    "rating": 8.1,
+    "note": "Easy. No drama.",
+    "endorsed": true
+  },
+  {
+    "ref": "E-04.3",
+    "name": "Red Reset",
+    "price": 32,
+    "type": "Serum",
+    "skin": ["sensitive", "redness"],
+    "finish": "calm",
+    "rating": 9.5,
+    "note": "For angry skin days.",
+    "endorsed": true
+  },
+  {
+    "ref": "E-04.4",
+    "name": "Night Serum",
+    "price": 42,
+    "type": "Serum",
+    "skin": ["all"],
+    "finish": "glow",
+    "rating": 8.8,
+    "note": "Best for texture.",
+    "endorsed": true
+  },
+  {
+    "ref": "E-04.5",
+    "name": "SPF 50",
+    "price": 26,
+    "type": "SPF",
+    "skin": ["all"],
+    "finish": "invisible",
+    "rating": 9.6,
+    "note": "Non-negotiable.",
+    "endorsed": true
+  },
+  {
+    "ref": "E-04.6",
+    "name": "Glass Drop",
+    "price": 62,
+    "type": "Serum",
+    "skin": ["all"],
+    "finish": "dewy",
+    "rating": 8.1,
+    "note": "Good. Not £62 good.",
+    "endorsed": false
+  },
+  {
+    "ref": "E-04.7",
+    "name": "Soft Clean",
+    "price": 22,
+    "type": "Cleanser",
+    "skin": ["all"],
+    "finish": "cream",
+    "rating": 8.6,
+    "note": "Boring in the best way.",
+    "endorsed": true
+  },
+  {
+    "ref": "E-04.8",
+    "name": "Oil Balm",
+    "price": 29,
+    "type": "Balm",
+    "skin": ["dry"],
+    "finish": "glow",
+    "rating": 7.7,
+    "note": "Beautiful, but too much for me.",
+    "endorsed": true
+  },
+  {
+    "ref": "E-04.9",
+    "name": "Clear Wash",
+    "price": 20,
+    "type": "Cleanser",
+    "skin": ["oily"],
+    "finish": "foam",
+    "rating": 8.0,
+    "note": "Great after gym.",
+    "endorsed": true
+  },
+  {
+    "ref": "E-04.10",
+    "name": "Tint Veil",
+    "price": 34,
+    "type": "Base",
+    "skin": ["all"],
+    "finish": "skin-like",
+    "rating": 9.0,
+    "note": "Best on camera.",
+    "endorsed": true
+  }
+]
